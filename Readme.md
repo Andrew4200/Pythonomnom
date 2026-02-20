@@ -10,6 +10,7 @@ This document defines the hard constraints, environment assumptions, and error-a
 
 Platform
 	•	iOS
+•	iPhone 15 Pro Max
 	•	Pythonista 3
 	•	Sandboxed runtime
 	•	No arbitrary pip installs
