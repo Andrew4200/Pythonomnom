@@ -23,7 +23,6 @@ asking for `scene` code.
 - `Readme.md` — this file
 - `docs/` — all reference material (see above)
 - `examples/` — curated runnable examples (see above)
-- `Hyperweb_Image_Finder.user.js` — standalone userscript (unrelated utility)
 
 ## Target
 
