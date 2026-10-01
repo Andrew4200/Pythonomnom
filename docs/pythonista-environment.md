@@ -40,10 +40,24 @@ Siri.【8177591067846620195†L166-L175】
 - The writable area is the app's `Documents/` folder; `Documents/site-packages/`
   is on `sys.path`.
 - There is no C compiler on device: packages needing native extensions cannot be
-  installed — use the bundled builds. StaSh (a shell installable via one-liner)
-  provides pip for pure-Python wheels into `site-packages`.
+  installed — use the bundled builds. For pure-Python packages into `site-packages`,
+  StaSh (a shell installable via one-liner) provides pip, and Pipista
+  ([jackatttack/Pipista](https://github.com/jackatttack/Pipista), public beta) is the
+  modern GUI replacement: find, install, and remove PyPI packages, or download public
+  GitHub projects, without touching the command line. Bootstrap it by running this
+  once in Pythonista:
+  ```python
+  from urllib.request import urlopen
+
+  url = (
+      'https://raw.githubusercontent.com/'
+      'jackatttack/Pipista/main/installer/install_pipista.py'
+  )
+  source = urlopen(url).read()
+  exec(compile(source, 'install_pipista.py', 'exec'))
+  ```
 - Repo rule for generated code is unchanged: bundled-only, paste-and-run, no install
-  step. StaSh/pip is an escape hatch for the human, not for generated scripts.
+  step. StaSh/Pipista/pip is an escape hatch for the human, not for generated scripts.
 
 ## Target device
 
