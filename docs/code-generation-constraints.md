@@ -279,3 +279,75 @@ This repository prioritizes:
 	•	Stability over cleverness
 
 All generated code must optimize for reliability and first-run correctness within the Pythonista iOS environment.
+
+⸻
+
+16. Anti-patterns (wrong → failure → right)
+
+Each pair below is a real bug class. Prefer the RIGHT form every time.
+
+**update() with a parameter**
+```python
+# WRONG — TypeError: update() takes 2 positional arguments (scene calls it with none)
+def update(self, dt):
+    self.position += self.velocity * dt
+# RIGHT — frame delta lives on self.dt
+def update(self):
+    self.position += self.velocity * self.dt
+```
+
+**Scene subclass __init__ without super().__init__()**
+```python
+# WRONG — AttributeError: 'MultiScene' object has no attribute 'fixed_time_step'
+# (crashed on-device; Scene.__init__ sets up fixed_time_step, view, etc.)
+class MultiScene(Scene):
+    def __init__(self, start_scene):
+        self.active_scene = start_scene
+# RIGHT
+class MultiScene(Scene):
+    def __init__(self, start_scene):
+        super().__init__()
+        self.active_scene = start_scene
+```
+
+**Vector2 convenience methods**
+```python
+# WRONG — Vector2.length() / .normalized() are unreliable in Pythonista's scene
+speed = v.length()
+direction = v.normalized()
+# RIGHT — explicit math
+import math
+speed = math.hypot(v.x, v.y)
+direction = Vector2(v.x / speed, v.y / speed) if speed else Vector2(0, 0)
+```
+
+**scene.Color for node colors**
+```python
+# WRONG
+node.color = scene.Color(1, 0, 0, 1)
+# RIGHT — plain tuples
+node.color = (1, 0, 0, 1)
+```
+
+**ShapeNode line_width in the constructor**
+```python
+# WRONG — silently ignored / unstable
+node = ShapeNode(path, fill_color=(1, 1, 1, 1), line_width=3)
+# RIGHT — set after initialization
+node = ShapeNode(path, fill_color=(1, 1, 1, 1))
+node.line_width = 3
+```
+
+**Guessing APIs from desktop Python or memory**
+```python
+# WRONG — NameError at runtime (triangle() does not exist in scene)
+triangle(...)
+# RIGHT — only call what the API references document; when unsure, check
+# docs/scene-api-reference.md and docs/sound-api-reference.md first
+```
+
+**Reaching for pip / installs**
+```python
+# WRONG — any install step (pip, StaSh, manual download) in generated code
+# RIGHT — bundled modules only; the script must be paste-and-run as a single file
+```
