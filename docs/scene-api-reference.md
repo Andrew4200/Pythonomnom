@@ -42,6 +42,7 @@ Each frame the scene processes, in order:
 | `did_change_size()` | Called on rotation; `size` already holds the new value. Reposition content here. |
 | `did_evaluate_actions()` | Called after children's actions finish each frame. |
 | `pause()` / `resume()` / `stop()` | Auto-called on home button / resume / close ("×"). Override to save state. |
+| `should_rotate()` | Called to decide auto-rotation; return `False` to lock orientation. |
 | `present_modal_scene(other)` | Overlay a scene (menus). It receives all touches. |
 | `dismiss_modal_scene()` | Close a modally presented scene. |
 | `controller_changed(key, value)` | MFi controller events, e.g. `'button_a'` → bool, `'thumbstick_left'` → Point(-1..1). |
