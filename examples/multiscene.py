@@ -6,6 +6,7 @@ from scene import *
 
 class MultiScene(Scene):
     def __init__(self, start_scene):
+        super().__init__()  # Scene.__init__ sets up fixed_time_step, view, etc.
         self.active_scene = start_scene
 
     def switch_scene(self, new_scene):
