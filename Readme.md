@@ -14,7 +14,7 @@ asking for `scene` code.
    - `docs/scene-api-reference.md` — condensed `scene` module API (Scene/Node/SpriteNode/Action/Shader/geometry/colors)
    - `docs/pythonista-particularities.md` — the 12 minimal rules; the reasoning behind the constraints
    - `docs/pythonista-environment.md` — the Pythonista runtime: version, bundled modules, sandbox limits
-   - `docs/builtin-sprites.md` — built-in image catalog (verified `plf:`/`spc:`/`iob:` prefixes, full `plf:` list)
+   - `docs/builtin-sprites.md` — built-in image catalog (all 12 packs verified on-device, full `plf:` list)
    - `docs/builtin-sounds.md` — built-in sound catalog (`arcade:`, `rpg:`, unverified packs flagged)
    - `docs/community-patterns.md` — battle-tested idioms mined from the community Pythonista-Tools collection
 3. Study `examples/` — five short, runnable, constraints-compliant scripts: Mandelbrot shader, simplex-noise shader, tile baker (`render_to_texture`), touch-reactive ShapeNode grid, MultiScene wrapper
