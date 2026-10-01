@@ -1,5 +1,15 @@
 # MultiScene: one Scene that hosts swappable sub-scenes (menu -> game -> over).
 # Forwards draw/update/touches/dt so sub-scenes behave like real scenes.
+# Gotchas baked in (both caused real on-device bugs):
+#   - Scene.bounds is READ-ONLY (derived from size). Assigning it raises
+#     AttributeError inside MultiScene.setup(), before the sub-scene's own
+#     setup() runs -- so no nodes are ever created and every frame draws an
+#     empty scene: gray screen, no further errors. Sync size only.
+#   - The host draws the active sub-scene's children itself instead of calling
+#     sub.draw(), so rendering doesn't depend on framework draw() semantics
+#     for scenes that were never presented via run(). The host also adopts the
+#     sub-scene's background_color, because the view clears with the presented
+#     (host) scene's color.
 # Source: community Pythonista-Tools collection (Andrew4200/Pythonista).
 from scene import *
 
@@ -16,15 +26,20 @@ class MultiScene(Scene):
 
     def _sync(self, sc):
         sc.size = self.size
-        sc.bounds = self.bounds
+        # Do NOT assign sc.bounds: it is read-only (derived from size).
 
     def setup(self):
         self._sync(self.active_scene)
         self.active_scene.setup()
+        self.background_color = self.active_scene.background_color
 
     def draw(self):
+        # Adopt the sub-scene's background (the view clears with the host's
+        # color) and draw the sub-scene's children directly.
+        self.background_color = self.active_scene.background_color
         self.active_scene.touches = self.touches
-        self.active_scene.draw()
+        for child in self.active_scene.children:
+            child.draw()
 
     def update(self):
         sc = self.active_scene
