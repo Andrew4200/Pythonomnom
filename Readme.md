@@ -276,3 +276,12 @@ This repository prioritizes:
 	•	Stability over cleverness
 
 All generated code must optimize for reliability and first-run correctness within the Pythonista iOS environment.
+
+
+---
+
+## Reference docs
+
+- [docs/scene-api-reference.md](docs/scene-api-reference.md) — condensed scene module API reference (Scene/Node/SpriteNode/Action/Shader/geometry/colors).
+- [docs/pythonista-particularities.md](docs/pythonista-particularities.md) — the 12 minimal rules; the reasoning behind the constraints above.
+- [docs/builtin-sprites.md](docs/builtin-sprites.md) — built-in `plf:` platformer sprite catalog.
