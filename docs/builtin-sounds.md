@@ -23,7 +23,7 @@ below were verified on-device (Pythonista 3.4).
 
 | Prefix | Picker title | License | Example sounds |
 |---|---|---|---|
-| `8ve:` | 8ve (UI Sounds) | raisedbeaches.com/octave | `8ve:beep-attention` (unconfirmed, see note) |
+| `8ve:` | 8ve (UI Sounds) | raisedbeaches.com/octave | `8ve:8ve-beep-attention` |
 | `arcade:` | Arcade | — | `arcade:Coin_1`, `arcade:Explosion_1` |
 | `casino:` | Casino | Kenney, CC0 | `casino:CardFan1`, `casino:CardPlace1` |
 | `digital:` | Digital | Kenney, CC0 | `digital:HighDown`, `digital:Laser1` |
@@ -37,6 +37,6 @@ below were verified on-device (Pythonista 3.4).
 Notes:
 
 - The reference name is the filename minus `.caf`.
-- The `8ve` pack's on-disk names contain hyphens (e.g. `8ve-beep-attention.caf`). The
-  direct mapping gives `8ve:beep-attention`, but the picker-inserted form is unconfirmed —
-  verify in the `[+]` picker before using `8ve:` names in generated code.
+- The reference name is the full filename minus `.caf`, with no stripping: the picker
+  inserts `8ve:8ve-beep-attention` for the on-disk file `8ve-beep-attention.caf`
+  (verified via `[+]` insert).
