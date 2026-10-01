@@ -1,0 +1,30 @@
+# Pythonomnom
+
+Curated knowledge base for generating correct Pythonista 3 (iOS, Python 3.10) code.
+Read the docs in this order:
+
+1. `docs/code-generation-constraints.md` — THE CONTRACT: hard rules plus anti-patterns. Always read first.
+2. `docs/pythonista-environment.md` — sandbox limits: no pip, `subprocess` raises `PermissionError`, ~30 s of background execution, no `tkinter`.
+3. `docs/scene-api-reference.md` — condensed `scene` module API (Scene/Node/SpriteNode/Action/Shader/geometry/colors).
+4. `docs/sound-api-reference.md` — condensed `sound` module API (`play_effect`/`Effect`/`Player`/`Recorder`/`MIDIPlayer`).
+5. `docs/builtin-sprites.md` — built-in image catalog; all 12 packs verified on-device with exact `prefix:Name` spellings.
+6. `docs/builtin-sounds.md` — built-in sound catalog; all 10 packs verified on-device.
+7. `docs/community-patterns.md` — battle-tested idioms mined from the community collection.
+8. `docs/pythonista-particularities.md` — the 12 minimal rules behind the constraints.
+
+## Examples (all tested on-device, paste-and-run)
+
+- `examples/mandelbrot-shader.py` — per-pixel Mandelbrot on the GPU via a custom GLSL fragment shader on a SpriteNode.
+- `examples/simplex-noise.py` — animated simplex-noise clouds computed per-pixel on the GPU (Ashima noise); no image assets.
+- `examples/tile-baker.py` — bake a composed ShapeNode group into one shared texture: O(1) texture memory for O(N) tiles.
+- `examples/touch-grid.py` — ShapeNode subclass grid with a touch distance-falloff heat effect.
+- `examples/multiscene.py` — one Scene hosting swappable sub-scenes (menu → game → over); note the `super().__init__()` call.
+
+## Generation rules of thumb
+
+- Visual stack, in order of preference: SpriteNode > ShapeNode > ui > canvas.
+- `update(self)` takes no arguments; the frame delta is `self.dt`.
+- If a `Scene` subclass defines `__init__`, it must call `super().__init__()`.
+- Node colors are `(r, g, b[, a])` tuples, never `scene.Color`.
+- Avoid `Vector2.length()` / `.normalized()`; use explicit math.
+- Everything self-contained, paste-and-run, bundled modules only.
