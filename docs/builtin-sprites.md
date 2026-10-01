@@ -1,13 +1,55 @@
-# Built-in Sprites (`plf:` set)
+# Built-in Images
+
+Pythonista ships a library of built-in images, browsable (and insertable) from the `[+]`
+button at the top of the editor. Reference any image by name:
+
+```python
+from scene import SpriteNode
+ship = SpriteNode('spc:PlayerShip1Orange')   # '<pack-prefix>:<AssetName>'
+```
+
+Physically, built-in images ship in the `Media/` directory of `PythonistaKit.framework`.
+
+## Verified packs
+
+These prefixes are confirmed by the official 3.4 docs or omz's own issue tracker:
+
+| Prefix | Pack | License | Verified examples |
+|---|---|---|---|
+| `plf:` | Platformer Art | Kenney, CC0 | `plf:Enemy_Bee_move` — full catalog below |
+| `spc:` | Space Shooter Art | Kenney, CC0 | `spc:PlayerShip1Orange`, `spc:LaserBlue9` (official scene docs) |
+| `iob:` | Ionicons Black | — | `iob:alert_circled` (omz's own bug report #19; Ionicons names convert hyphens to underscores, e.g. `alert-circled` → `alert_circled`) |
+
+## Unverified packs — confirm in the in-app picker
+
+These packs exist in the Images tab, but no public source confirms their code prefixes or
+asset names. The prefixes below are community guesses, **not verified** — check the `[+]`
+picker on-device before using any of them in generated code:
+
+| Candidate prefix | Pack | License / attribution |
+|---|---|---|
+| `emj:`? | Emoji | — |
+| `iow:`? | Ionicons White | — |
+| `plc:`? | Planet Cute | Daniel Cook (lostgarden.com) — tile-based game art: characters, blocks, ramps, items, enemies |
+| `shp:`? | Shapes | — |
+| `tst:`? | Test Images | USC-SIPI et al. — classic test images (Lena, Barbara, Mandrill, Peppers, Cameraman) |
+| `typb:`? | Typicons Black | Stephen Hutchings, CC BY-SA |
+| `typw:`? | Typicons White | Stephen Hutchings, CC BY-SA |
+| ? | Playing Cards | Kenney, CC0 — prefix unknown |
+| ? | Puzzle Game Art | Kenney, CC0 — prefix unknown |
+
+## Historical note: Typicons
+
+In Pythonista 1.x, Typicons were addressed as `Typicons96_<Name>` via a bundle manifest
+(`Typicons-M.txt`). That layout is gone in 2.x/3.x; the modern prefix scheme applies.
+
+## Platformer Art catalog (`plf:`)
 
 Pythonista's built-in platformer sprite catalog — 313 sprites, referenced by name:
 
 ```python
 ship = SpriteNode('plf:Enemy_Bee_move')
 ```
-
-Browse the full built-in image library (all prefixes) from the `[+]` button at the top of the
-Pythonista editor. Other known prefixes include `spc:` (space) and `test:`.
 
 ## Enemies (55)
 
