@@ -58,6 +58,16 @@ Siri.【8177591067846620195†L166-L175】
   ```
 - Repo rule for generated code is unchanged: bundled-only, paste-and-run, no install
   step. StaSh/Pipista/pip is an escape hatch for the human, not for generated scripts.
+- `subprocess`/`multiprocessing` are importable, but actually launching a subprocess
+  raises `PermissionError` — every script runs in the app's own process (iOS sandbox).
+- A running script gets roughly 30 seconds after the app goes to the background, then
+  it may be suspended.
+- Scripts launched from Shortcuts can't be interactive and have limited memory.
+- Local files live in a shared container that is not shown in the Files app (only
+  iCloud documents appear there). Get files in via iCloud, the "Import…" picker, or
+  the share-sheet action.
+- No `tkinter` (use `ui` instead); `turtle` is only a partial port. Not every module
+  is available inside the keyboard extension.
 
 ## Target device
 
