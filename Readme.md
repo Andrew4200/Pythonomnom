@@ -15,11 +15,14 @@ asking for `scene` code.
    - `docs/pythonista-particularities.md` — the 12 minimal rules; the reasoning behind the constraints
    - `docs/pythonista-environment.md` — the Pythonista runtime: version, bundled modules, sandbox limits
    - `docs/builtin-sprites.md` — built-in `plf:` platformer sprite catalog
+   - `docs/community-patterns.md` — battle-tested idioms mined from the community Pythonista-Tools collection
+3. Study `examples/` — five short, runnable, constraints-compliant scripts: Mandelbrot shader, simplex-noise shader, tile baker (`render_to_texture`), touch-reactive ShapeNode grid, MultiScene wrapper
 
 ## Layout
 
 - `Readme.md` — this file
 - `docs/` — all reference material (see above)
+- `examples/` — curated runnable examples (see above)
 - `Hyperweb_Image_Finder.user.js` — standalone userscript (unrelated utility)
 
 ## Target
