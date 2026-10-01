@@ -5,38 +5,40 @@ button at the top of the editor. Reference any image by name:
 
 ```python
 from scene import SpriteNode
-ship = SpriteNode('spc:PlayerShip1Orange')   # '<pack-prefix>:<AssetName>'
+ship = SpriteNode('spc:PlayerShip1Orange')   # '<prefix>:<AssetName>'
 ```
 
-Physically, built-in images ship in the `Media/` directory of `PythonistaKit.framework`.
+Physically, images ship as loose PNG files (plus `@2x` retina variants) in
+`Media/Images/` inside the app bundle (`Pythonista3.app/Media/Images/`). Each pack is a
+subfolder whose name **is** the reference prefix, and the pack list comes from
+`Media/Collections.json`. All 12 packs below were verified on-device (Pythonista 3.4).
 
-## Verified packs
+## The 12 image packs
 
-These prefixes are confirmed by the official 3.4 docs or omz's own issue tracker:
-
-| Prefix | Pack | License | Verified examples |
+| Prefix | Picker title | License | Example assets |
 |---|---|---|---|
-| `plf:` | Platformer Art | Kenney, CC0 | `plf:Enemy_Bee_move` — full catalog below |
-| `spc:` | Space Shooter Art | Kenney, CC0 | `spc:PlayerShip1Orange`, `spc:LaserBlue9` (official scene docs) |
-| `iob:` | Ionicons Black | — | `iob:alert_circled` (omz's own bug report #19; Ionicons names convert hyphens to underscores, e.g. `alert-circled` → `alert_circled`) |
+| `card:` | Playing Cards | Kenney, CC0 | `card:BackBlue1` |
+| `emj:` | Emoji | — | `emj:Airplane`, `emj:Alarm_Clock` |
+| `iob:` | Ionicons Black | Ben Sperry, MIT | `iob:alert_24`, `iob:alert_circled` |
+| `iow:` | Ionicons White | Ben Sperry, MIT | `iow:alert_24` |
+| `plc:` | Planet Cute | Daniel Cook (lostgarden.com) | `plc:Brown_Block`, `plc:Character_Boy` |
+| `plf:` | Platformer Art | Kenney, CC0 | `plf:AlienBeige_climb1` — full catalog below |
+| `pzl:` | Puzzle Game Art | Kenney, CC0 | `pzl:BallBlue`, `pzl:BallGray` |
+| `shp:` | Shapes | — | `shp:BlackSmoke00` |
+| `spc:` | Space Shooter Art | Kenney, CC0 | `spc:BackgroundBlack`, `spc:PlayerShip1Orange` |
+| `test:` | Test Images | USC-SIPI et al. | `test:Boat`, `test:Bridge` |
+| `typb:` | Typicons Black | Stephen Hutchings, CC BY-SA | `typb:Anchor`, `typb:Archive` |
+| `typw:` | Typicons White | Stephen Hutchings, CC BY-SA | `typw:Anchor` |
 
-## Unverified packs — confirm in the in-app picker
+Notes:
 
-These packs exist in the Images tab, but no public source confirms their code prefixes or
-asset names. The prefixes below are community guesses, **not verified** — check the `[+]`
-picker on-device before using any of them in generated code:
-
-| Candidate prefix | Pack | License / attribution |
-|---|---|---|
-| `emj:`? | Emoji | — |
-| `iow:`? | Ionicons White | — |
-| `plc:`? | Planet Cute | Daniel Cook (lostgarden.com) — tile-based game art: characters, blocks, ramps, items, enemies |
-| `shp:`? | Shapes | — |
-| `tst:`? | Test Images | USC-SIPI et al. — classic test images (Lena, Barbara, Mandrill, Peppers, Cameraman) |
-| `typb:`? | Typicons Black | Stephen Hutchings, CC BY-SA |
-| `typw:`? | Typicons White | Stephen Hutchings, CC BY-SA |
-| ? | Playing Cards | Kenney, CC0 — prefix unknown |
-| ? | Puzzle Game Art | Kenney, CC0 — prefix unknown |
+- The reference name is the filename minus `.png` — ignore the `@2x` variants, they're
+  picked automatically on retina screens.
+- `iow:`, `typw:`, and `shp:` are flagged `darkBackground` in `Collections.json`: light
+  art designed to sit on dark backgrounds.
+- `iob:alert_circled` is confirmed by omz's own issue tracker; Ionicons' upstream
+  hyphenated names are already underscored in the bundled filenames, so what you see on
+  disk is what you reference.
 
 ## Historical note: Typicons
 
