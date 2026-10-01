@@ -56,6 +56,9 @@ y = self.size.h * 0.9
 	•	Use self.dt for delta time
 	•	Always initialize all critical attributes inside setup()
 	•	update() may execute before all nodes are fully constructed
+	•	If a Scene subclass defines __init__, it must call super().__init__() —
+	  otherwise Scene never sets up internal state (e.g. fixed_time_step) and
+	  the runtime crashes with AttributeError inside scene._draw.
 
 Safe pattern:
 
