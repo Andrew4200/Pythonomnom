@@ -24,6 +24,7 @@ asking for `scene` code.
 
 - `Readme.md` — this file
 - `docs/` — all reference material (see above)
+- `llms.txt` — reading order and example index for AI code generation
 - `examples/` — curated runnable examples (see above)
 
 ## Target
