@@ -12,6 +12,8 @@ sound.play_effect('arcade:Coin_1')   # '<prefix>:<SoundName>'
 can be stopped or looped, so it is not fire-and-forget. About 32 effects can play
 simultaneously.
 
+See `docs/sound-api-reference.md` for the full `sound` module API.
+
 Physically, sounds ship as `.caf` files in `Media/Sounds/` inside the app bundle
 (`Pythonista3.app/Media/Sounds/`). Each pack is a subfolder whose name **is** the
 reference prefix, and the pack list comes from `Media/Collections.json`. All 10 packs
