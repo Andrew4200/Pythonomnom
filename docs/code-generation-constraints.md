@@ -352,6 +352,23 @@ triangle(...)
 # RIGHT — bundled modules only; the script must be paste-and-run as a single file
 ```
 
+
+**Manually rendering a sub-scene from the host's draw()**
+```python
+# WRONG -- treats a Scene like a manually rendered canvas. Calling
+# sub.draw() / child.draw() on a scene that was never presented via run()
+# produced a gray screen with no errors in MultiScene.
+def draw(self):
+    for child in self.active_scene.children:
+        child.draw()
+# RIGHT -- the sub-scene is a node factory: build its nodes, reparent them
+# into the presented host scene, and let the engine's node renderer do its job.
+# No draw() override on the host at all.
+for node in list(new_scene.children):
+    node.remove_from_parent()
+    self.add_child(node)
+```
+
 **Assigning Scene.bounds**
 ```python
 # WRONG -- AttributeError: can't set attribute. bounds is derived from size.
