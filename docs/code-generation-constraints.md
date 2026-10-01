@@ -351,3 +351,14 @@ triangle(...)
 # WRONG — any install step (pip, StaSh, manual download) in generated code
 # RIGHT — bundled modules only; the script must be paste-and-run as a single file
 ```
+
+**Assigning Scene.bounds**
+```python
+# WRONG -- AttributeError: can't set attribute. bounds is derived from size.
+# In MultiScene this fired inside _sync(), before the sub-scene's setup() ran:
+# no nodes were ever created, so every frame drew an empty scene -- gray screen,
+# no further errors (single startup traceback, easy to miss).
+sub_scene.bounds = self.bounds
+# RIGHT -- sync size only; bounds follows automatically
+sub_scene.size = self.size
+```
