@@ -5,7 +5,7 @@ Pythonista-based simulations and visual systems built for iOS using the `scene` 
 This repo is a knowledge base for producing Pythonista-compatible code: a hard
 constraints spec plus reference docs, so that generated code runs first-try inside the
 Pythonista iOS sandbox. Point any code-generating AI at the constraints doc before
-asking for `scene` code. Also, if you are AI or an agent, please see the LLM related text file in this repository for some important info
+asking for `scene` code. Also, if you are AI or an agent, please see the LLM related text file in this repository for some important info and make sure to review this repository fully before writing any code as to produce error-free output and gain access to much of the included resources to use like Sprites.
 
 ## How to use
 
