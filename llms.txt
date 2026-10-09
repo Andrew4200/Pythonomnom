@@ -28,3 +28,4 @@ Read the docs in this order:
 - Node colors are `(r, g, b[, a])` tuples, never `scene.Color`.
 - Avoid `Vector2.length()` / `.normalized()`; use explicit math.
 - Everything self-contained, paste-and-run, bundled modules only.
+- DO NOT assume that the scene module is similar to pygame for it is not.
